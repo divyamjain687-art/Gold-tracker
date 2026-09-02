@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Tracker | Live Rates, GPS & Themes</title>
+  
+  <!-- FontAwesome Icons & Chart.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-icon">
+          <i class="fa-solid fa-coins"></i>
+        </div>
+        <div class="title-box">
+          <h1 data-i18n="appTitle">Gold Tracker</h1>
+          <p data-i18n="appSubtitle">Live, Accurate & Simple Local Rates Across India</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="live-badge">
+          <span class="pulse-dot"></span>
+          <span data-i18n="liveBadge">LIVE MARKET</span>
+        </div>
+
+        <!-- Theme Toggle Button (Light / Dark Mode) -->
+        <button id="themeToggleBtn" class="theme-toggle-btn">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+          <span id="themeText" data-i18n="themeLight">Light Mode</span>
+        </button>
+        
+        <!-- Language Switcher Dropdown (10 Indian Languages) -->
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिंदी (Hindi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          <option value="ml">മലയാളം (Malayalam)</option>
+          <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        </select>
+
+        <!-- Auth Button / Profile Container -->
+        <div id="authContainer">
+          <button id="openAuthBtn" class="auth-btn">
+            <i class="fa-solid fa-user"></i>
+            <span data-i18n="signInBtn">Sign In</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- GPS & City Location Selector Bar -->
+    <section class="location-card">
+      <div class="location-info" style="gap: 0.75rem; flex-wrap: wrap;">
+        <button id="gpsBtn" class="gps-btn">
+          <i class="fa-solid fa-location-crosshairs"></i>
+          <span data-i18n="detectLocationBtn">Detect My Location (GPS)</span>
+        </button>
+        
+        <button id="refreshRatesBtn" class="refresh-btn">
+          <i class="fa-solid fa-rotate"></i>
+          <span data-i18n="refreshRatesBtn">Refresh Live Rates</span>
+        </button>
+
+        <span id="gpsStatus" style="font-size: 0.85rem; color: var(--text-muted);"></span>
+      </div>
+
+      <div class="city-select-group">
+        <label for="citySelect" data-i18n="selectCity" style="font-weight: 600; color: var(--text-muted);">Select City / State:</label>
+        <select id="citySelect" class="city-dropdown"></select>
+      </div>
+    </section>
+
+    <!-- Main Metal Rate Cards Grid -->
+    <section class="cards-grid">
+      
+      <!-- 24K Gold -->
+      <div class="rate-card gold-24k">
+        <div class="card-header">
+          <div>
+            <h2 class="metal-title" data-i18n="gold24k">24K Pure Gold</h2>
+            <span class="price-unit" data-i18n="per10g">per 10 grams</span>
+          </div>
+          <span class="metal-badge">99.9% Purity</span>
+        </div>
+        <div class="price-display">
+          <div id="priceGold24k" class="price-main">₹73,850</div>
+          <div class="price-change up">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span id="gold24kChange">+0.45% (Live Market)</span>
+          </div>
+        </div>
+        <div class="price-breakdown">
+          <span data-i18n="per1g">per 1 gram:</span>
+          <strong id="gold24kGram">₹7,385</strong>
+        </div>
+      </div>
+
+      <!-- 22K Gold -->
+      <div class="rate-card gold-22k">
+        <div class="card-header">
+          <div>
+            <h2 class="metal-title" data-i18n="gold22k">22K Standard Gold</h2>
+            <span class="price-unit" data-i18n="per10g">per 10 grams</span>
+          </div>
+          <span class="metal-badge">Jewelry Grade</span>
+        </div>
+        <div class="price-display">
+          <div id="priceGold22k" class="price-main">₹67,700</div>
+          <div class="price-change up">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span id="gold22kChange">+0.45% (Live Market)</span>
+          </div>
+        </div>
+        <div class="price-breakdown">
+          <span data-i18n="per1g">per 1 gram:</span>
+          <strong id="gold22kGram">₹6,770</strong>
+        </div>
+      </div>
+
+      <!-- 18K Gold -->
+      <div class="rate-card gold-18k">
+        <div class="card-header">
+          <div>
+            <h2 class="metal-title" data-i18n="gold18k">18K Jewelry Gold</h2>
+            <span class="price-unit" data-i18n="per10g">per 10 grams</span>
+          </div>
+          <span class="metal-badge">75% Purity</span>
+        </div>
+        <div class="price-display">
+          <div id="priceGold18k" class="price-main">₹55,390</div>
+          <div class="price-change up">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span id="gold18kChange">+0.42% (Live Market)</span>
+          </div>
+        </div>
+        <div class="price-breakdown">
+          <span data-i18n="per1g">per 1 gram:</span>
+          <strong id="gold18kGram">₹5,539</strong>
+        </div>
+      </div>
+
+      <!-- Silver -->
+      <div class="rate-card silver">
+        <div class="card-header">
+          <div>
+            <h2 class="metal-title" data-i18n="silver">Silver (99.9% Pure)</h2>
+            <span class="price-unit" data-i18n="perKg">per 1 kg</span>
+          </div>
+          <span class="metal-badge">Chandi</span>
+        </div>
+        <div class="price-display">
+          <div id="priceSilver" class="price-main">₹86,500</div>
+          <div class="price-change up">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span id="silverChange">+0.60% (Live Market)</span>
+          </div>
+        </div>
+        <div class="price-breakdown">
+          <span data-i18n="per10g">per 10 grams:</span>
+          <strong id="silver10g">₹865</strong>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Instant Price Calculator -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <i class="fa-solid fa-calculator"></i>
+        <span data-i18n="unitCalculatorTitle">Instant Gold & Silver Price Calculator</span>
+      </h2>
+
+      <div class="calc-grid">
+        <div class="form-group">
+          <label for="calcWeight" data-i18n="weightLabel">Enter Weight:</label>
+          <input type="number" id="calcWeight" class="form-control" value="10" min="0.1" step="0.1">
+        </div>
+
+        <div class="form-group">
+          <label for="calcUnit" data-i18n="unitLabel">Select Unit:</label>
+          <select id="calcUnit" class="form-control">
+            <option value="gram">Grams (g)</option>
+            <option value="tola">Tola (8g)</option>
+            <option value="tenGrams" selected>10 Grams</option>
+            <option value="hundredGrams">100 Grams</option>
+            <option value="kg">1 Kilogram (kg)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="calcMetal" data-i18n="purityLabel">Select Metal & Purity:</label>
+          <select id="calcMetal" class="form-control">
+            <option value="gold24k">24K Gold (99.9%)</option>
+            <option value="gold22k" selected>22K Gold (91.6%)</option>
+            <option value="gold18k">18K Gold (75.0%)</option>
+            <option value="silver">Silver (Fine 99.9%)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="toggle-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="calcGst" checked>
+          <span data-i18n="includeGst">Include 3% GST</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="calcMaking">
+          <span data-i18n="makingCharges">Estimated Making Charges (10%)</span>
+        </label>
+      </div>
+
+      <div class="calc-result-box">
+        <span class="calc-total-label" data-i18n="totalEstimate">Total Estimated Cost:</span>
+        <span id="calcTotalVal" class="calc-total-val">₹69,731</span>
+      </div>
+    </section>
+
+    <!-- Price Trend Chart Section -->
+    <section class="section-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
+        <h2 class="section-title" style="margin-bottom: 0;">
+          <i class="fa-solid fa-chart-line"></i>
+          <span data-i18n="priceTrendTitle">Gold Price Trend Chart (India)</span>
+        </h2>
+        <div class="chart-controls">
+          <button class="chart-btn active" data-period="7d" data-i18n="trend7d">7 Days</button>
+          <button class="chart-btn" data-period="30d" data-i18n="trend30d">30 Days</button>
+          <button class="chart-btn" data-period="1y" data-i18n="trend1y">1 Year</button>
+        </div>
+      </div>
+      
+      <div class="chart-wrapper">
+        <canvas id="trendChart"></canvas>
+      </div>
+    </section>
+
+    <!-- City Comparison Table Section -->
+    <section class="section-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+        <h2 class="section-title" style="margin-bottom: 0;">
+          <i class="fa-solid fa-city"></i>
+          <span data-i18n="cityComparisonTitle">Gold & Silver Rates Across Major Cities in India</span>
+        </h2>
+        <input type="text" id="searchCity" class="form-control" style="width: 250px;" data-i18n="searchCityPlaceholder" placeholder="Search city or state...">
+      </div>
+
+      <div class="table-container">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th data-i18n="cityHeader">City / Region</th>
+              <th data-i18n="gold24kHeader">24K Gold (10g)</th>
+              <th data-i18n="gold22kHeader">22K Gold (10g)</th>
+              <th data-i18n="silverHeader">Silver (1 kg)</th>
+            </tr>
+          </thead>
+          <tbody id="cityTableBody">
+            <!-- Dynamically Rendered -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Simple Local Buyer Guide -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span data-i18n="buyerGuideTitle">Simple Buying Guide for Gold & Silver in India</span>
+      </h2>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3><i class="fa-solid fa-stamp"></i> <span data-i18n="guideHallmarkTitle">Look for BIS Hallmark</span></h3>
+          <p data-i18n="guideHallmarkDesc">Always check for the 6-digit HUID code and BIS Hallmark logo on gold jewelry.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3><i class="fa-solid fa-gem"></i> <span data-i18n="guidePurityTitle">Understand Gold Purity</span></h3>
+          <p data-i18n="guidePurityDesc">24K is 99.9% pure (coins/bars), 22K is 91.6% pure (standard jewelry), 18K is 75% pure.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3><i class="fa-solid fa-receipt"></i> <span data-i18n="guideGstTitle">GST & Making Charges</span></h3>
+          <p data-i18n="guideGstDesc">Standard GST on gold across India is 3%. Making charges usually vary between 8% to 18%.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <a id="whatsappShareBtn" href="#" target="_blank" class="whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span data-i18n="whatsappShareBtn">Share Today's Rates on WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sign In / Sign Up Modal Window -->
+  <div id="authModal" class="modal-overlay">
+    <div class="modal-box">
+      <button id="closeAuthBtn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-tabs">
+        <button id="tabSignIn" class="tab-btn active" data-i18n="tabSignIn">Sign In</button>
+        <button id="tabSignUp" class="tab-btn" data-i18n="tabSignUp">Sign Up</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="signInForm" class="modal-form">
+        <div class="form-group">
+          <label data-i18n="emailLabel">Email Address</label>
+          <input type="email" id="signInEmail" class="form-control" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="passwordLabel">Password</label>
+          <input type="password" id="signInPassword" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="submit-btn" data-i18n="submitSignIn">Sign In</button>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="signUpForm" class="modal-form" style="display: none;">
+        <div class="form-group">
+          <label data-i18n="nameLabel">Full Name</label>
+          <input type="text" id="signUpName" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="emailLabel">Email Address</label>
+          <input type="email" id="signUpEmail" class="form-control" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="passwordLabel">Password</label>
+          <input type="password" id="signUpPassword" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="submit-btn" data-i18n="submitSignUp">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-i18n="footerText">Gold Tracker • Designed for simplicity and local transparency.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
