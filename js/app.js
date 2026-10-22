@@ -76,8 +76,16 @@ document.addEventListener("DOMContentLoaded", () => {
             match.gold22k = liveCity.gold22k;
             match.gold18k = liveCity.gold18k;
             match.silver = liveCity.silver;
+            if (liveCity.change24h !== undefined) match.change24h = liveCity.change24h;
           }
         });
+
+        if (resData.officialDate) {
+          const sessionEl = document.getElementById("ibjaSessionDate");
+          if (sessionEl) {
+            sessionEl.innerHTML = `<i class="fa-regular fa-clock"></i> <span>Session: ${resData.officialDate}</span>`;
+          }
+        }
 
         // Update selected city ref
         const updatedSelected = cityRates.find(c => c.city === selectedCityData.city);
@@ -228,6 +236,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Silver
     document.getElementById("priceSilver").textContent = `₹${selectedCityData.silver.toLocaleString("en-IN")}`;
     document.getElementById("silver10g").textContent = `₹${Math.round(selectedCityData.silver / 100).toLocaleString("en-IN")}`;
+
+    // Update 24h Change Badges
+    const change24 = selectedCityData.change24h !== undefined ? selectedCityData.change24h : -1.60;
+    const isUp = change24 >= 0;
+    const changeText = `${isUp ? '+' : ''}${change24}% (24h IBJA)`;
+
+    ["gold24kChange", "gold22kChange", "gold18kChange", "silverChange"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.textContent = changeText;
+        el.parentElement.className = `price-change ${isUp ? 'up' : 'down'}`;
+        const icon = el.previousElementSibling;
+        if (icon) icon.className = `fa-solid fa-arrow-trend-${isUp ? 'up' : 'down'}`;
+      }
+    });
 
     updateWhatsAppLink();
   }

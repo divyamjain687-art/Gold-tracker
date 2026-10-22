@@ -59,7 +59,8 @@ const translations = {
     refreshRatesBtn: "Refresh Live Rates",
     lastUpdated: "Last Updated:",
     tabSignIn: "Sign In",
-    tabSignUp: "Sign Up"
+    tabSignUp: "Sign Up",
+    officialSourceTag: "Official Benchmark: India Bullion & Jewellers Association (IBJA)"
   },
   hi: {
     appTitle: "गोल्ड ट्रैकर",
@@ -120,7 +121,8 @@ const translations = {
     refreshRatesBtn: "लाइव दरें रिफ्रेश करें",
     lastUpdated: "अंतिम अपडेट:",
     tabSignIn: "साइन इन",
-    tabSignUp: "साइन अप"
+    tabSignUp: "साइन अप",
+    officialSourceTag: "आधिकारिक बेंचमार्क: इंडिया बुलियन एंड ज्वैलर्स एसोसिएशन (IBJA)"
   },
   ta: {
     appTitle: "கோல்ட் டிராக்கர்",
@@ -181,7 +183,8 @@ const translations = {
     refreshRatesBtn: "விலைகளை புதுப்பி",
     lastUpdated: "கடைசியாக புதுப்பிக்கப்பட்டது:",
     tabSignIn: "உள்நுழை",
-    tabSignUp: "பதிவு செய்"
+    tabSignUp: "பதிவு செய்",
+    officialSourceTag: "அதிகாரப்பூர்வ அளவுகோல்: இந்தியா புல்லியன் & ஜூவல்லர்ஸ் அசோசியேஷன் (IBJA)"
   },
   te: {
     appTitle: "గోల్డ్ ట్రాకర్",
@@ -242,7 +245,8 @@ const translations = {
     refreshRatesBtn: "ధరలను రిఫ్రెష్ చేయండి",
     lastUpdated: "చివరి నవీకరణ:",
     tabSignIn: "సైన్ ఇన్",
-    tabSignUp: "సైన్ అప్"
+    tabSignUp: "సైన్ అప్",
+    officialSourceTag: "అధికారిక బెంచ్‌మార్క్: ఇండియా బులియన్ & జ్యువెలర్స్ అసోసియేషన్ (IBJA)"
   },
   bn: {
     appTitle: "গোল্ড ট্র্যাকার",
@@ -303,7 +307,8 @@ const translations = {
     refreshRatesBtn: "লাইভ দাম রিফ্রেশ করুন",
     lastUpdated: "সর্বশেষ আপডেট:",
     tabSignIn: "সাইন ইন",
-    tabSignUp: "সাইন আপ"
+    tabSignUp: "সাইন আপ",
+    officialSourceTag: "অফিসিয়াল বেঞ্চমার্ক: ইন্ডিয়া বুলিয়ন অ্যান্ড জুয়েলার্স অ্যাসোসিয়েশন (IBJA)"
   },
   mr: {
     appTitle: "गोल्ड ट्रॅकर",
@@ -364,7 +369,8 @@ const translations = {
     refreshRatesBtn: "लाइव्ह दर रिफ्रेश करा",
     lastUpdated: "अंतिम अपडेट:",
     tabSignIn: "साइन इन",
-    tabSignUp: "साइन अप"
+    tabSignUp: "साइन अप",
+    officialSourceTag: "अधिकृत बेंचमार्क: इंडिया बुलियन अँड ज्वेलर्स असोसिएशन (IBJA)"
   },
   gu: {
     appTitle: "ગોલ્ડ ટ્રેકર",
@@ -425,7 +431,8 @@ const translations = {
     refreshRatesBtn: "ભાવ રિફ્રેશ કરો",
     lastUpdated: "છેલ્લું અપડેટ:",
     tabSignIn: "સાઇન ઇન",
-    tabSignUp: "સાઇન અપ"
+    tabSignUp: "સાઇન અપ",
+    officialSourceTag: "સત્તાવાર બેંચમાર્ક: ઇન્ડિયા બુલિયન એન્ડ જ્વેલર્સ એસોસિએશન (IBJA)"
   },
   kn: {
     appTitle: "ಗೋಲ್ಡ್ ಟ್ರ್ಯಾಕರ್",
@@ -486,7 +493,8 @@ const translations = {
     refreshRatesBtn: "ದರ ರಿಫ್ರೆಶ್ ಮಾಡಿ",
     lastUpdated: "ಕೊನೆಯ ಅಪ್‌ಡೇಟ್:",
     tabSignIn: "ಸೈನ್ ಇನ್",
-    tabSignUp: "ಸೈನ್ ಅಪ್"
+    tabSignUp: "ಸೈನ್ ಅಪ್",
+    officialSourceTag: "ಅಧಿಕೃತ ಮಾನದಂಡ: ಇಂಡಿಯಾ ಬುಲಿಯನ್ & ಜ್ಯುವೆಲರ್ಸ್ ಅಸೋಸಿಯೇಷನ್ (IBJA)"
   },
   ml: {
     appTitle: "ഗോൾഡ് ട്രാക്കർ",
@@ -547,7 +555,8 @@ const translations = {
     refreshRatesBtn: "നിരക്കുകൾ പുതുക്കുക",
     lastUpdated: "അവസാന അപ്ഡേറ്റ്:",
     tabSignIn: "സൈൻ ഇൻ",
-    tabSignUp: "സൈൻ അപ്"
+    tabSignUp: "സൈൻ അപ്",
+    officialSourceTag: "ഔദ്യോഗിക മാനദണ്ഡം: ഇന്ത്യ ബുള്ളിയൻ & ജ്വല്ലേഴ്സ് അസോസിയേഷൻ (IBJA)"
   },
   pa: {
     appTitle: "ਗੋਲਡ ਟ੍ਰੈਕਰ",
@@ -608,6 +617,7 @@ const translations = {
     refreshRatesBtn: "ਰੇਟ ਰਿਫ੍ਰੈਸ਼ ਕਰੋ",
     lastUpdated: "ਆਖਰੀ ਅਪਡੇਟ:",
     tabSignIn: "ਸਾਈਨ ਇਨ",
-    tabSignUp: "ਸਾਈਨ ਅੱਪ"
+    tabSignUp: "ਸਾਈਨ ਅੱਪ",
+    officialSourceTag: "ਅਧਿਕਾਰਤ ਬੈਂਚਮਾਰਕ: ਇੰਡੀਆ ਬੁਲੀਅਨ ਐਂਡ ਜਵੈਲਰਜ਼ ਐਸੋਸੀਏਸ਼ਨ (IBJA)"
   }
 };

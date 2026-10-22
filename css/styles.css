@@ -268,6 +268,42 @@ body {
   cursor: pointer;
 }
 
+/* Official Benchmark Banner */
+.official-benchmark-banner {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-left: 4px solid var(--primary-gold);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.benchmark-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.benchmark-date-pill {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: var(--primary-gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 /* Rate Cards Grid */
 .cards-grid {
   display: grid;
